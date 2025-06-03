@@ -1,7 +1,7 @@
 import { SignInButton } from "@clerk/clerk-react";
 import { convexQuery } from "@convex-dev/react-query";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute, Link } from "@tanstack/router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Authenticated, Unauthenticated } from "convex/react";
 import { ShieldCheck, Clock, Users, CheckCircle, X } from "lucide-react";
 import { api } from "../../convex/_generated/api";

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Octokit } from "@octokit/rest";
 import { Download } from "lucide-react";
