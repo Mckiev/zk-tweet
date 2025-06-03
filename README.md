@@ -73,6 +73,8 @@ This template includes a `vercel.json` file configured for Convex deployments. T
 
 For detailed instructions, see [Convex Vercel Deployment Guide](https://docs.convex.dev/production/hosting/vercel).
 
+BOOM
+
 ## License
 
 MIT
