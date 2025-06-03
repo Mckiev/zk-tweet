@@ -73,7 +73,7 @@ function RootComponent() {
                         to="/"
                         className="btn btn-ghost normal-case text-xl"
                       >
-                        Fullstack Vibe Coding
+                        ZK-Tweet
                       </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
@@ -86,7 +86,27 @@ function RootComponent() {
                           }}
                           onClick={() => setIsSidebarOpen(false)}
                         >
-                          Home
+                          Feed
+                        </Link>
+                        <Link
+                          to="/generate"
+                          className="btn btn-ghost"
+                          activeProps={{
+                            className: "btn btn-ghost btn-active",
+                          }}
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Generate
+                        </Link>
+                        <Link
+                          to="/submit"
+                          className="btn btn-ghost"
+                          activeProps={{
+                            className: "btn btn-ghost btn-active",
+                          }}
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Submit
                         </Link>
                       </nav>
                     </div>
@@ -99,7 +119,7 @@ function RootComponent() {
                     <Outlet />
                   </main>
                   <footer className="footer footer-center p-4 text-base-content">
-                    <p>© {new Date().getFullYear()} Fullstack Vibe Coding</p>
+                    <p>© {new Date().getFullYear()} ZK-Tweet</p>
                   </footer>
                 </div>
                 {/* Sidebar content for mobile */}
@@ -122,7 +142,31 @@ function RootComponent() {
                             }}
                             className="flex items-center p-2"
                           >
-                            Home
+                            Feed
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/generate"
+                            onClick={() => setIsSidebarOpen(false)}
+                            activeProps={{
+                              className: "active",
+                            }}
+                            className="flex items-center p-2"
+                          >
+                            Generate
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/submit"
+                            onClick={() => setIsSidebarOpen(false)}
+                            activeProps={{
+                              className: "active",
+                            }}
+                            className="flex items-center p-2"
+                          >
+                            Submit
                           </Link>
                         </li>
                       </ul>
@@ -138,7 +182,7 @@ function RootComponent() {
               <header className="navbar bg-base-100 shadow-sm border-b border-base-300">
                 <div className="container mx-auto flex justify-between w-full">
                   <div className="navbar-start">
-                    <h1 className="font-semibold">Fullstack Vibe Coding</h1>
+                    <h1 className="font-semibold">ZK-Tweet</h1>
                   </div>
                   <div className="navbar-end">
                     <SignInButton mode="modal">
@@ -158,7 +202,7 @@ function RootComponent() {
                 <Outlet />
               </main>
               <footer className="footer footer-center p-4 text-base-content">
-                <p>© {new Date().getFullYear()} Fullstack Vibe Coding</p>
+                <p>© {new Date().getFullYear()} ZK-Tweet</p>
               </footer>
             </Unauthenticated>
           </div>

@@ -8,4 +8,12 @@ export default defineSchema({
     clerkId: v.string(),
     name: v.string(),
   }).index("by_clerkId", ["clerkId"]),
+  
+  posts: defineTable({
+    message: v.string(),
+    signature: v.string(),
+    ringSize: v.number(),
+    timestamp: v.number(),
+    verified: v.boolean(),
+  }).index("by_timestamp", ["timestamp"]),
 });

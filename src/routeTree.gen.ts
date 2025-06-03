@@ -11,9 +11,23 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SubmitImport } from './routes/submit'
+import { Route as GenerateImport } from './routes/generate'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const SubmitRoute = SubmitImport.update({
+  id: '/submit',
+  path: '/submit',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const GenerateRoute = GenerateImport.update({
+  id: '/generate',
+  path: '/generate',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -32,6 +46,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/generate': {
+      id: '/generate'
+      path: '/generate'
+      fullPath: '/generate'
+      preLoaderRoute: typeof GenerateImport
+      parentRoute: typeof rootRoute
+    }
+    '/submit': {
+      id: '/submit'
+      path: '/submit'
+      fullPath: '/submit'
+      preLoaderRoute: typeof SubmitImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/generate': typeof GenerateRoute
+  '/submit': typeof SubmitRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/generate': typeof GenerateRoute
+  '/submit': typeof SubmitRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/generate': typeof GenerateRoute
+  '/submit': typeof SubmitRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/generate' | '/submit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/generate' | '/submit'
+  id: '__root__' | '/' | '/generate' | '/submit'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GenerateRoute: typeof GenerateRoute
+  SubmitRoute: typeof SubmitRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GenerateRoute: GenerateRoute,
+  SubmitRoute: SubmitRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +115,19 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/generate",
+        "/submit"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/generate": {
+      "filePath": "generate.tsx"
+    },
+    "/submit": {
+      "filePath": "submit.tsx"
     }
   }
 }
