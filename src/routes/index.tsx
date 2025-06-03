@@ -1,8 +1,6 @@
-import { SignInButton } from "@clerk/clerk-react";
 import { convexQuery } from "@convex-dev/react-query";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Authenticated, Unauthenticated } from "convex/react";
 import { ShieldCheck, Clock, Users, CheckCircle, X } from "lucide-react";
 import { api } from "../../convex/_generated/api";
 
@@ -17,40 +15,21 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <div>
-      <Unauthenticated>
-        <div className="text-center mb-8">
-          <div className="not-prose flex justify-center mb-4">
-            <ShieldCheck className="w-16 h-16 text-primary" />
-          </div>
-          <h1>ZK-Tweet</h1>
-          <p className="text-lg text-base-content/70 mb-6">
-            Anonymous whistleblowing platform using zero-knowledge proofs
-          </p>
-          <div className="not-prose">
-            <SignInButton mode="modal">
-              <button className="btn btn-primary btn-lg">Get Started</button>
-            </SignInButton>
-          </div>
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold mb-2">Anonymous Feed</h1>
+        <p className="text-base-content/70 mb-4">
+          Verified anonymous posts from GitHub organization members
+        </p>
+        <div className="not-prose flex gap-2">
+          <Link to="/generate" className="btn btn-primary">
+            Generate Signature
+          </Link>
+          <Link to="/submit" className="btn btn-secondary">
+            Submit Post
+          </Link>
         </div>
-      </Unauthenticated>
-
-      <Authenticated>
-        <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-2">Anonymous Feed</h1>
-          <p className="text-base-content/70 mb-4">
-            Verified anonymous posts from GitHub organization members
-          </p>
-          <div className="not-prose flex gap-2">
-            <Link to="/generate" className="btn btn-primary">
-              Generate Signature
-            </Link>
-            <Link to="/submit" className="btn btn-secondary">
-              Submit Post
-            </Link>
-          </div>
-        </div>
-        <PostsFeed />
-      </Authenticated>
+      </div>
+      <PostsFeed />
     </div>
   );
 }
